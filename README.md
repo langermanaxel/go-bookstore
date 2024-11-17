@@ -42,3 +42,78 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
    
    ```bash
    git clone https://github.com/langermanaxel/go-bookstore.git
+
+2. **Ir al directorio del proyecto:**
+
+   ```bash
+   cd go-bookstore
+
+3. **Instalar las dependencias:**
+
+   ```bash
+   go mod tidy
+
+4. **Configurar la conexión a la base de datos:**
+   - Crea un archivo .env en la raíz del proyecto y añade la URL de conexión a MongoDB:
+
+   MONGODB_URI=mongodb://localhost:27017
+
+5. **Ejecutar el servidor:**
+
+   go run main.go
+
+   - El servidor debería estar corriendo en http://localhost:8000.
+
+## 🚀 Uso
+
+Para interactuar con la API, puedes usar herramientas como Postman o curl. A continuación, se presentan algunos ejemplos de cómo utilizar la API.
+
+### Crear un libro
+
+curl -X POST http://localhost:8000/books -H "Content-Type: application/json" -d '{
+    "title": "El Principito",
+    "author": "Antoine de Saint-Exupéry",
+    "year": 1943,
+    "pages": 96
+}'
+
+### Obtener todos los libros
+
+curl http://localhost:8000/books
+
+### Actualizar un libro
+
+curl -X PUT http://localhost:8000/books/{id} -H "Content-Type: application/json" -d '{
+    "title": "El Principito - Edición Especial",
+    "author": "Antoine de Saint-Exupéry",
+    "year": 1943,
+    "pages": 100
+}'
+
+### Eliminar un libro
+
+curl -X DELETE http://localhost:8000/books/{id}
+
+## 📚 Endpoints
+
+Aquí están los principales endpoints de la API:
+
+| Método | Endpoint           | Descripción                     |
+|--------|--------------------|---------------------------------|
+| GET    | `/books`            | Obtiene todos los libros        |
+| GET    | `/books/{id}`       | Obtiene un libro por su ID      |
+| POST   | `/books`            | Crea un nuevo libro             |
+| PUT    | `/books/{id}`       | Actualiza un libro por su ID    |
+| DELETE | `/books/{id}`       | Elimina un libro por su ID      |
+
+## 🤝 Contribuir
+
+¡Las contribuciones son bienvenidas! Si deseas contribuir al proyecto, sigue estos pasos:
+
+1. Realiza un **fork** del repositorio.
+2. Crea una nueva **rama** para tus cambios:
+   
+   ```bash
+   git checkout -b nombre-de-la-rama
+
+   
